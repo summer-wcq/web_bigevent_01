@@ -64,7 +64,7 @@ $(function() {
                 layer.msg('登录成功！')
                 location.href = '/index.html'
                     // 存储
-                localStorage.getItem('token', res.token)
+                localStorage.setItem('token', res.token)
             }
         });
     })
