@@ -11,9 +11,9 @@ function getUserInfo() {
         method: "GET",
         url: "/my/userinfo",
         // Header请求头配置对象
-        header: {
-            Authorization: localStorage.getItem('token') || ''
-        },
+        // header: {
+        //     Authorization: localStorage.getItem('token') || ''
+        // },
         success: function(res) {
             // console.log(res);
             if (res.status !== 0) {
@@ -24,6 +24,20 @@ function getUserInfo() {
         }
     });
 }
+
+// 2.退出
+$('#btnLogout').on('click', function() {
+    // 询问框
+    layer.confirm('是否确认退出?', { icon: 3, title: '提示' }, function(index) {
+        //do something
+        // 1.清空本地token
+        localStorage.removeItem('token');
+        // 2.页面跳转
+        location.href = '/login.html';
+        // 3.关闭询问框
+        layer.close(index);
+    });
+})
 
 // 封装函数
 function renderAvatar(user) {
